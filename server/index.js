@@ -27,7 +27,7 @@ app.use(compression())
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(root))
-} 
+}
 
 app.use('/auth', require('./routes/auth'))
 app.use('/callback', require('./routes/callback'))
@@ -36,4 +36,5 @@ app.use('/refresh', require('./routes/refresh'))
 
 app.use(fallback('index.html', { root }))
 
-app.listen(port, () => console.log('Listening on port ' + port))
+const host = '127.0.0.1'
+app.listen(port, host, () => console.log('Listening on host ' + host + ' and port ' + port))
